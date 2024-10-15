@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FLAPPYBIRD.MainPage"
+             Shell.NavBarIsVisible="false">
+
+    <Grid>
+
+        <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="GuidoSobe"/>
+    </Grid.GestureRecognizers>
+    
+      <Image  Source="flappybird.jpg"
+              Aspect="AspectFill"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"/>
+
+
+      <Image  Source="guido.png"
+              x:Name="guido"
+              Margin="10"
+              HeightRequest="100"
+              WidthRequest="100"
+              HorizontalOptions="Start"/>
+
+
+      <Image  Source ="canov.jpg"
+              x:Name="imgCanocima"
+              HeightRequest="300"
+              HorizontalOptions="End"
+              VerticalOptions="Start"/>
+
+
+      <Image  Source="cano.jpg"
+              x:Name="imgCanobaixo"
+              HeightRequest="300"
+              HorizontalOptions="End"
+              VerticalOptions="End"/>
+
+         <Frame x:Name="frameGameOver"
+                Background="#99000000"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+                
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+    </Frame.GestureRecognizers>
+
+    <Image Source ="acabou.png"/>
+
+    </Frame>
+
+
+
+
+
+    </Grid>
+</ContentPage>
