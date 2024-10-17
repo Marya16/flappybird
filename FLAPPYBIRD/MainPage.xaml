@@ -9,7 +9,7 @@
         <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="GuidoSobe"/>
     </Grid.GestureRecognizers>
-    
+      <Label x:Name="labelScore"/>  
       <Image  Source="flappybird.jpg"
               Aspect="AspectFill"
               HorizontalOptions="Fill"
@@ -49,10 +49,5 @@
     <Image Source ="acabou.png"/>
 
     </Frame>
-
-
-
-
-
     </Grid>
 </ContentPage>

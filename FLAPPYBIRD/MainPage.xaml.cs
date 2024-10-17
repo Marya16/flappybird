@@ -79,7 +79,7 @@ int score = 0;
 			imgCanocima.TranslationY = Random.Shared.Next((int)alturaMin, (int)alturaMax);
 			imgCanobaixo.TranslationY = imgCanocima.TranslationY + alturaMin + aberturaMin + imgCanobaixo.HeightRequest;
 			score++;
-			labelScore.Text="Canos:" + JavaScriptCore.ToString("D3");
+			labelScore.Text="Canos:" + score.ToString("D3");
 		}
 
 	}
