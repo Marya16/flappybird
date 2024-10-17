@@ -58,7 +58,6 @@ int score = 0;
 		 await Task.Delay(tempoEntreFrames);
 	  }
 	}
-   
     protected override void OnSizeAllocated(double w, double h)
     {
     base.OnSizeAllocated(w, h);
@@ -81,7 +80,6 @@ int score = 0;
 			score++;
 			labelScore.Text="Canos:" + score.ToString("D3");
 		}
-
 	}
 
 	void OnGameOverClicked(object s,TappedEventArgs a)

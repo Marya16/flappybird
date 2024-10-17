@@ -9,12 +9,13 @@
         <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="GuidoSobe"/>
     </Grid.GestureRecognizers>
-      <Label x:Name="labelScore"/>  
+
+      <Label x:Name="labelScore"/>
+
       <Image  Source="flappybird.jpg"
               Aspect="AspectFill"
               HorizontalOptions="Fill"
               VerticalOptions="Fill"/>
-
 
       <Image  Source="guido.png"
               x:Name="guido"
@@ -23,13 +24,11 @@
               WidthRequest="100"
               HorizontalOptions="Start"/>
 
-
       <Image  Source ="canov.jpg"
               x:Name="imgCanocima"
               HeightRequest="300"
               HorizontalOptions="End"
               VerticalOptions="Start"/>
-
 
       <Image  Source="cano.jpg"
               x:Name="imgCanobaixo"
