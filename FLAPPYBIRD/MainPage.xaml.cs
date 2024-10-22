@@ -1,4 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿
 
 namespace FLAPPYBIRD;
 
@@ -79,6 +79,7 @@ int score = 0;
 			imgCanobaixo.TranslationY = imgCanocima.TranslationY + alturaMin + aberturaMin + imgCanobaixo.HeightRequest;
 			score++;
 			labelScore.Text="Canos:" + score.ToString("D3");
+			labelfrase.Text="Voce passou por:" + score.ToString("D3") + "Canos";
 		}
 	}
 
@@ -93,6 +94,12 @@ int score = 0;
 	{
 		estaMorto=false;
 		guido.TranslationY=0;
+        imgCanocima.TranslationX=-larguraJanela;
+		imgCanobaixo.TranslationX=-larguraJanela;
+		guido.TranslationX=0;
+		guido.TranslationY=0;
+		score=0;
+		GerenciaCanos();
 	}
    bool VerificaColisaoTeto()
 	{
@@ -104,7 +111,7 @@ int score = 0;
 	}
    bool VerificaColisaoChao()
    {
-	var maxY = alturaJanela/2;
+	var maxY = alturaJanela/2 - chao.HeightRequest;
 	if (guido.TranslationY>=maxY)
        return true;
 	else
@@ -115,12 +122,26 @@ int score = 0;
 	if (!estaMorto)
 	{
 		if (VerificaColisaoTeto()||
-		    VerificaColisaoChao())
-			{
-				return true;
-			}
-	}
-	            return false;
+		    VerificaColisaoChao()||
+			VerificaColisaoCanocima())
+			return true;
+    }
+	        return false;
+   }
+   bool VerificaColisaoCanocima()
+   {
+	var posHGuido = (larguraJanela/2)-(guido.WidthRequest/2);
+	var posVGuido = (alturaJanela/2)-(guido.HeightRequest/2);
+    if (posHGuido >= Math.Abs(imgCanocima.TranslationX)-imgCanocima.WidthRequest &&
+	    posHGuido <= Math.Abs(imgCanocima.TranslationX)+imgCanocima.WidthRequest &&
+		posVGuido <= imgCanocima.HeightRequest + imgCanocima.TranslationY)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
    }
 
    void GuidoSobe(object sender, EventArgs e)
@@ -128,3 +149,4 @@ int score = 0;
 		estaPulando=true;
    }
 }
+

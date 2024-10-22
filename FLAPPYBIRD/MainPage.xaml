@@ -4,49 +4,70 @@
              x:Class="FLAPPYBIRD.MainPage"
              Shell.NavBarIsVisible="false">
 
-    <Grid>
+        <Grid>
+                <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GuidoSobe"/>
+                </Grid.GestureRecognizers>
 
-        <Grid.GestureRecognizers>
-        <TapGestureRecognizer Tapped="GuidoSobe"/>
-    </Grid.GestureRecognizers>
+                <Label x:Name="labelScore"
+                       Margin="5,5"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start"
+                       HorizontalTextAlignment="Center"
+                       FontSize="25"
+                       TextColor="#006600"/>
 
-      <Label x:Name="labelScore"/>
+                <Label x:Name="labelfrase"
+                       FontFamily="games"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       FontSize="25"
+                       TextColor="Black"/>
 
-      <Image  Source="flappybird.jpg"
-              Aspect="AspectFill"
-              HorizontalOptions="Fill"
-              VerticalOptions="Fill"/>
+                <Image  Source="flappybird.jpg"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"/>
 
-      <Image  Source="guido.png"
-              x:Name="guido"
-              Margin="10"
-              HeightRequest="100"
-              WidthRequest="100"
-              HorizontalOptions="Start"/>
+                <Image  Source="guido.png"
+                        x:Name="guido"
+                        Margin="10"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        HorizontalOptions="Start"/>
+                  
+                <Image  Source="chaoo.png"
+                        x:Name="chao"
+                        Margin="10"
+                        HeightRequest="150"
+                        HorizontalOptions="Start"
+                        VerticalOptions="End"/>  
+                        
 
-      <Image  Source ="canov.jpg"
-              x:Name="imgCanocima"
-              HeightRequest="300"
-              HorizontalOptions="End"
-              VerticalOptions="Start"/>
+                <Image  Source="canov.jpg"
+                        x:Name="imgCanocima"
+                        HeightRequest="300"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"/>
 
-      <Image  Source="cano.jpg"
-              x:Name="imgCanobaixo"
-              HeightRequest="300"
-              HorizontalOptions="End"
-              VerticalOptions="End"/>
+                <Image  Source="cano.jpg"
+                        x:Name="imgCanobaixo"
+                        HeightRequest="300"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"/>
 
-         <Frame x:Name="frameGameOver"
-                Background="#99000000"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill">
-                
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnGameOverClicked"/>
-    </Frame.GestureRecognizers>
+                <Frame x:Name="frameGameOver"
+                       Background="#99000000"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill">
 
-    <Image Source ="acabou.png"/>
+                        <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+                        </Frame.GestureRecognizers>
 
-    </Frame>
-    </Grid>
+                        <Image Source="acabou.png"/>
+                        
+                        </Frame>
+        </Grid>
 </ContentPage>
