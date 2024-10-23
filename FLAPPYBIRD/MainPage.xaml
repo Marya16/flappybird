@@ -9,21 +9,30 @@
                         <TapGestureRecognizer Tapped="GuidoSobe"/>
                 </Grid.GestureRecognizers>
 
-                <Label x:Name="labelScore"
+          <Grid>
+             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+             </Grid.RowDefinitions>
+
+              <Label x:Name="labelScore"
                        Margin="5,5"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"
                        HorizontalTextAlignment="Center"
                        FontSize="25"
-                       TextColor="#006600"/>
-
-                <Label x:Name="labelfrase"
-                       FontFamily="games"
-                       HorizontalOptions="Fill"
-                       VerticalOptions="Fill"
-                       HorizontalTextAlignment="Center"
-                       FontSize="25"
+                       Grid.Row="0"
                        TextColor="Black"/>
+               
+                <Label x:Name="labelfrase"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Start"
+                       FontSize="25"
+                       Grid.Row="1"
+                       TextColor="Black"/>
+          </Grid>
 
                 <Image  Source="flappybird.jpg"
                         Aspect="AspectFill"
@@ -43,8 +52,7 @@
                         HeightRequest="150"
                         HorizontalOptions="Start"
                         VerticalOptions="End"/>  
-                        
-
+                
                 <Image  Source="canov.jpg"
                         x:Name="imgCanocima"
                         HeightRequest="300"
@@ -67,7 +75,7 @@
                         </Frame.GestureRecognizers>
 
                         <Image Source="acabou.png"/>
-                        
-                        </Frame>
+
+               </Frame>
         </Grid>
 </ContentPage>

@@ -78,8 +78,12 @@ int score = 0;
 			imgCanocima.TranslationY = Random.Shared.Next((int)alturaMin, (int)alturaMax);
 			imgCanobaixo.TranslationY = imgCanocima.TranslationY + alturaMin + aberturaMin + imgCanobaixo.HeightRequest;
 			score++;
+			if(score %2 == 0)
+			{
+               velocidade++;
+			}
 			labelScore.Text="Canos:" + score.ToString("D3");
-			labelfrase.Text="Voce passou por:" + score.ToString("D3") + "Canos";
+			labelfrase.Text="VOCE PASSOU POR:" + score.ToString("D3") + "CANOS";
 		}
 	}
 
@@ -119,14 +123,10 @@ int score = 0;
    }
    bool VerificaColisao()
    {
-	if (!estaMorto)
-	{
-		if (VerificaColisaoTeto()||
-		    VerificaColisaoChao()||
-			VerificaColisaoCanocima())
-			return true;
-    }
-	        return false;
+	return VerificaColisaoTeto()||
+	       VerificaColisaoChao()||
+		   VerificaColisaoCanocima()||
+		   VerificaColosaoCanobaixo();       
    }
    bool VerificaColisaoCanocima()
    {
@@ -143,10 +143,26 @@ int score = 0;
 			return false;
 		}
    }
-
+   bool VerificaColosaoCanobaixo()
+   {
+	var posHGuido = (larguraJanela/2) - (guido.WidthRequest/2);
+	var posVGuido = (alturaJanela/2) + (guido.HeightRequest/2) + guido.TranslationY;
+	var yMaxCano = imgCanocima.HeightRequest + imgCanocima.TranslationY + aberturaMin;
+	if (posHGuido >= Math.Abs(imgCanobaixo.TranslationX) - imgCanobaixo.WidthRequest &&
+	    posHGuido <= Math.Abs(imgCanobaixo.TranslationX) + imgCanobaixo.WidthRequest &&
+		posVGuido >= yMaxCano)
+		{
+            return true;
+		}
+		else
+		{
+			return false;
+		}
+   }
    void GuidoSobe(object sender, EventArgs e)
    {
 		estaPulando=true;
    }
+
 }
 
