@@ -15,7 +15,7 @@
                 <RowDefinition Height="*"/>
              </Grid.RowDefinitions>
 
-              <Label x:Name="labelScore"
+              <Label   x:Name="labelScore"
                        Margin="5,5"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"

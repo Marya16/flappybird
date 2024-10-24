@@ -15,15 +15,13 @@ const int maxTempoPulando = 3;
 int tempoPulando = 0;
 bool estaPulando = false;
 const int forcaPulo = 40;
-const int aberturaMin = 100;
+const int aberturaMin = 200;
 int score = 0;
 	public MainPage()
 	{
 		InitializeComponent();
 		
 	}
-
-
 	void AplicaGravidade()
 	{
 		guido.TranslationY += gravidade;
@@ -38,8 +36,6 @@ int score = 0;
 			tempoPulando=0;
 		}
 	}
-	
-	
 	async Task Desenhar ()
 	{
       while (! estaMorto)
@@ -49,9 +45,10 @@ int score = 0;
 		 else
 		 AplicaGravidade(); 
          GerenciaCanos();
-		 if (VerificaColisaoChao())
+		 if (VerificaColisao())
 		 {
 			estaMorto=true;
+			labelfrase.Text = "VOCE PASSOU POR:" + score + "Canos";
 			frameGameOver.IsVisible = true;
 			break;
 		 }
@@ -79,11 +76,8 @@ int score = 0;
 			imgCanobaixo.TranslationY = imgCanocima.TranslationY + alturaMin + aberturaMin + imgCanobaixo.HeightRequest;
 			score++;
 			if(score %2 == 0)
-			{
-               velocidade++;
-			}
+            velocidade++;
 			labelScore.Text="Canos:" + score.ToString("D3");
-			labelfrase.Text="VOCE PASSOU POR:" + score.ToString("D3") + "CANOS";
 		}
 	}
 
@@ -135,13 +129,11 @@ int score = 0;
     if (posHGuido >= Math.Abs(imgCanocima.TranslationX)-imgCanocima.WidthRequest &&
 	    posHGuido <= Math.Abs(imgCanocima.TranslationX)+imgCanocima.WidthRequest &&
 		posVGuido <= imgCanocima.HeightRequest + imgCanocima.TranslationY)
-		{
+		
 			return true;
-		}
 		else
-		{
 			return false;
-		}
+	
    }
    bool VerificaColosaoCanobaixo()
    {
@@ -151,13 +143,11 @@ int score = 0;
 	if (posHGuido >= Math.Abs(imgCanobaixo.TranslationX) - imgCanobaixo.WidthRequest &&
 	    posHGuido <= Math.Abs(imgCanobaixo.TranslationX) + imgCanobaixo.WidthRequest &&
 		posVGuido >= yMaxCano)
-		{
+		
             return true;
-		}
 		else
-		{
 			return false;
-		}
+		
    }
    void GuidoSobe(object sender, EventArgs e)
    {
