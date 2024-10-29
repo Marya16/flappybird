@@ -78,6 +78,7 @@ int score = 0;
 			score++;
 			if(score %2 == 0)
             velocidade++;
+			SoundHelper.Play("somponto.wav");
 			labelScore.Text="Canos:" + score.ToString("D3");
 			labelfrase.Text = "VOCE PASSOU POR:" + score.ToString("D3")+ "Canos";
 		}
@@ -93,6 +94,7 @@ int score = 0;
 	void Inicializar()
 	{
 		estaMorto=false;
+		SoundHelper.Play("somcomeco.wav");
 		guido.TranslationY=0;
         imgCanocima.TranslationX=-larguraJanela;
 		imgCanobaixo.TranslationX=-larguraJanela;
@@ -119,10 +121,17 @@ int score = 0;
    }
    bool VerificaColisao()
    {
-	return VerificaColisaoTeto()||
-	       VerificaColisaoChao()||
-		   VerificaColisaoCanocima()||
-		   VerificaColosaoCanobaixo();       
+	if (VerificaColisaoChao()||
+		VerificaColisaoTeto()||
+		VerificaColosaoCanobaixo()||
+		VerificaColisaoCanocima())  
+       {
+	   return true;
+	   }
+	   else 
+	   {
+	   return false;
+	   }
    }
    bool VerificaColisaoCanocima()
    {
@@ -132,10 +141,13 @@ int score = 0;
 	    posHGuido <= Math.Abs(imgCanocima.TranslationX)+imgCanocima.WidthRequest &&
 		posVGuido <= imgCanocima.HeightRequest + imgCanocima.TranslationY)
 		
-			return true;
+       {
+		return true;
+	   }
 		else
+		{
 			return false;
-	
+		}
    }
    bool VerificaColosaoCanobaixo()
    {

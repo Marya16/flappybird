@@ -9,30 +9,6 @@
                         <TapGestureRecognizer Tapped="GuidoSobe"/>
                 </Grid.GestureRecognizers>
 
-          <Grid>
-             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-             </Grid.RowDefinitions>
-
-              <Label   x:Name="labelScore"
-                       Margin="5,5"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start"
-                       HorizontalTextAlignment="Center"
-                       FontSize="25"
-                       Grid.Row="0"
-                       TextColor="Black"/>
-               
-                <Label x:Name="labelfrase"
-                       HorizontalOptions="Fill"
-                       HorizontalTextAlignment="Center"
-                       VerticalOptions="Fill"
-                       VerticalTextAlignment="Start"
-                       FontSize="25"
-                       Grid.Row="1"
-                       TextColor="Black"/>
-          </Grid>
 
                 <Image  Source="flappybird.jpg"
                         Aspect="AspectFill"
@@ -65,17 +41,38 @@
                         HorizontalOptions="End"
                         VerticalOptions="End"/>
 
+                <Label  x:Name="labelScore"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        FontSize="25"
+                        TextColor="Black"/>
+
                 <Frame x:Name="frameGameOver"
                        Background="#99000000"
                        HorizontalOptions="Fill"
                        VerticalOptions="Fill">
 
-                        <Frame.GestureRecognizers>
+                        <Grid>
+             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+             </Grid.RowDefinitions>
+
+                        <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnGameOverClicked"/>
-                        </Frame.GestureRecognizers>
+                        </Grid.GestureRecognizers>                      
+
+                        <Label x:Name="labelfrase"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Start"
+                       FontSize="25"
+                       Grid.Row="1"
+                       TextColor="Black"/>
 
                         <Image Source="acabou.png"/>
-
+                </Grid>
                </Frame>
         </Grid>
 </ContentPage>
