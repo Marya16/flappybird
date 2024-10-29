@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
 	
 const int gravidade = 8;
 const int tempoEntreFrames = 25;
-bool estaMorto = true;
+bool estaMorto = false;
 double larguraJanela = 0;
 double alturaJanela = 0;
 int velocidade = 10;
@@ -38,10 +38,11 @@ int score = 0;
 	}
 	async Task Desenhar ()
 	{
-      while (! estaMorto)
+      while (!estaMorto)
 	  {
          if (estaPulando)
 		   AplicaPulo();
+		   
 		 else
 		 AplicaGravidade(); 
          GerenciaCanos();
@@ -49,7 +50,6 @@ int score = 0;
 		 {
 			estaMorto=true;
 			SoundHelper.Play("sommorto.wav");
-			
 			frameGameOver.IsVisible = true;
 			break;
 		 }
@@ -88,6 +88,8 @@ int score = 0;
 	{
 		frameGameOver.IsVisible=false;
 		Inicializar();
+		imgCanobaixo.TranslationX = -larguraJanela;
+		imgCanocima.TranslationX = -larguraJanela;
 		Desenhar();
 	}
 
@@ -96,8 +98,8 @@ int score = 0;
 		estaMorto=false;
 		SoundHelper.Play("somcomeco.wav");
 		guido.TranslationY=0;
-        imgCanocima.TranslationX=-larguraJanela;
-		imgCanobaixo.TranslationX=-larguraJanela;
+        imgCanocima.TranslationX= -larguraJanela;
+		imgCanobaixo.TranslationX= -larguraJanela;
 		guido.TranslationX=0;
 		guido.TranslationY=0;
 		score=0;
@@ -115,9 +117,13 @@ int score = 0;
    {
 	var maxY = alturaJanela/2 - chao.HeightRequest;
 	if (guido.TranslationY>=maxY)
+	{
        return true;
+	}
 	else
-	   return false;  
+	{
+	   return false;
+	}  
    }
    bool VerificaColisao()
    {
@@ -135,8 +141,8 @@ int score = 0;
    }
    bool VerificaColisaoCanocima()
    {
-	var posHGuido = (larguraJanela/2)-(guido.WidthRequest/2);
-	var posVGuido = (alturaJanela/2)-(guido.HeightRequest/2);
+	var posHGuido = (larguraJanela - 50)-(guido.WidthRequest/2);
+	var posVGuido = (alturaJanela / 2)-(guido.HeightRequest/2) + guido.TranslationY;
     if (posHGuido >= Math.Abs(imgCanocima.TranslationX)-imgCanocima.WidthRequest &&
 	    posHGuido <= Math.Abs(imgCanocima.TranslationX)+imgCanocima.WidthRequest &&
 		posVGuido <= imgCanocima.HeightRequest + imgCanocima.TranslationY)
@@ -151,16 +157,20 @@ int score = 0;
    }
    bool VerificaColosaoCanobaixo()
    {
-	var posHGuido = (larguraJanela/2) - (guido.WidthRequest/2);
-	var posVGuido = (alturaJanela/2) + (guido.HeightRequest/2) + guido.TranslationY;
+	var posHGuido = (larguraJanela - 50) - (guido.WidthRequest / 2);
+	var posVGuido = (alturaJanela / 2) + (guido.HeightRequest / 2) + guido.TranslationY;
 	var yMaxCano = imgCanocima.HeightRequest + imgCanocima.TranslationY + aberturaMin;
 	if (posHGuido >= Math.Abs(imgCanobaixo.TranslationX) - imgCanobaixo.WidthRequest &&
 	    posHGuido <= Math.Abs(imgCanobaixo.TranslationX) + imgCanobaixo.WidthRequest &&
 		posVGuido >= yMaxCano)
 		
+	   {
             return true;
+	   }
 		else
+	   {
 			return false;
+	   }
 		
    }
    void GuidoSobe(object sender, EventArgs e)
