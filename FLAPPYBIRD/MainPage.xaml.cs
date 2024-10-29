@@ -48,7 +48,8 @@ int score = 0;
 		 if (VerificaColisao())
 		 {
 			estaMorto=true;
-			labelfrase.Text = "VOCE PASSOU POR:" + score + "Canos";
+			SoundHelper.Play("sommorto.wav");
+			
 			frameGameOver.IsVisible = true;
 			break;
 		 }
@@ -78,6 +79,7 @@ int score = 0;
 			if(score %2 == 0)
             velocidade++;
 			labelScore.Text="Canos:" + score.ToString("D3");
+			labelfrase.Text = "VOCE PASSOU POR:" + score.ToString("D3")+ "Canos";
 		}
 	}
 
